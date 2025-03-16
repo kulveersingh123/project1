@@ -1,0 +1,25 @@
+---
+- name: Deploy source code on local machine
+  hosts: localhost
+  tasks:
+    - name: Archive the source code
+      archive:
+        path: /path/to/source/code/*  # Change this to your actual source code path
+        dest: /tmp/source_code.zip
+        format: zip
+
+    - name: Copy zip file to local F drive
+      win_copy:
+        src: /tmp/source_code.zip
+        dest: F:\source_code.zip
+
+    - name: Extract zip file in F drive
+      win_unzip:
+        src: F:\source_code.zip
+        dest: F:\deployed_code
+        remote_src: yes
+
+    - name: (Optional) Restart Application
+      win_service:
+        name: YourApplicationService  # Change this to the relevant service name
+        state: restarted

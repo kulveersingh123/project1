@@ -15,4 +15,4 @@ jobs:
         run: sudo apt update && sudo apt install -y ansible
 
       - name: Run Ansible Playbook
-        run: ansible-playbook deploy.yml -i inventory
+        run: ansible-playbook ansible/deploy.yml

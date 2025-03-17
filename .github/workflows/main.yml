@@ -2,8 +2,7 @@ name: Deploy with Ansible
 
 on:
   push:
-    branches: |
-      - **
+    branches: [ "master" ]
 
 jobs:
   deploy:
